@@ -1,0 +1,95 @@
+.testimo {
+  background-color: #56b2801a;
+  padding: 40px 0px;
+  &__title {
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 57.6px;
+    letter-spacing: -0.8999999165534973px;
+    text-align: center;
+    color: #0b254b;
+  }
+
+  &__text {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 27.6px;
+    letter-spacing: 0.10000000149011612px;
+    text-align: center;
+    color: #5e6e89;
+    padding: 10px 0px;
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 50px;
+  }
+
+  &__card {
+    padding: 30px;
+    background-color: white;
+  }
+
+  &__card__star {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    justify-content: center;
+    color: green;
+  }
+
+  &__card__img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  &__card__info {
+    h3 {
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 28.8px;
+      text-align: center;
+      padding: 10px 0px;
+    }
+
+    p {
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 20.7px;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 1100px) {
+    &__cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 20px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    &__cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-gap: 20px;
+    }
+  }
+
+  @media (max-width: 360px) {
+    &__card {
+      padding: 15px;
+    }
+
+    &__card__info {
+      h3 {
+        font-size: 16px;
+        line-height: 20px;
+      }
+    }
+  }
+}
