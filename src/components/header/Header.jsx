@@ -9,11 +9,14 @@ import { MdClose } from "react-icons/md";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import { LuHeart } from "react-icons/lu";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
   const [show, setShow] = useState(false);
   const wishlist = useSelector(state => state.like.value)
   const cart = useSelector(state => state.cart.value)
+  let location = usePathname()
+  if (location.includes("/admin")) return <></>
   return (
     <header className="header">
       <nav className="header__nav container">

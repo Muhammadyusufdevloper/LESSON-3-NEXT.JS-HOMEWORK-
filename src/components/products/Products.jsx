@@ -1,5 +1,5 @@
 "use client";
-import React, { memo } from 'react'
+import React, { memo, useState } from 'react'
 import "./Products.scss"
 import Link from 'next/link'
 import Image from 'next/image'
@@ -8,11 +8,23 @@ import { MdOutlineShoppingCart, MdShoppingCart } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '@/lib/features/cart/cartSlice';
 import { toggleHeart } from '@/lib/features/wishlist/wishlistSlice';
+import { useGetProductsQuery } from '@/lib/api/productApi';
+import { useGetCategoryQuery } from '@/lib/api/categoryApi';
 
-const Products = ({ title, text, PRODUCT }) => {
+const Products = ({ title, text, limit }) => {
     const wishlist = useSelector(state => state.like.value)
     const cart = useSelector(state => state.cart.value)
+    const [goCategory, setGoCategory] = useState("")
+    let page = 1
+    let category = goCategory === "all" ? "" : goCategory
+    const { data: PRODUCT } = useGetProductsQuery({ limit, page, category })
+    const { data: categoryData } = useGetCategoryQuery()
     let dispatch = useDispatch()
+    let productItem = categoryData?.map((category) => (
+        <li key={category.id}>
+            <data className={goCategory === category.slug ? 'product__active' : ''} onClick={(e) => setGoCategory(e.target.value)} value={category?.slug}>{category.name}</data>
+        </li>
+    ))
     return (
         <>
             <section className='product'>
@@ -21,8 +33,16 @@ const Products = ({ title, text, PRODUCT }) => {
                         <h2 className='product__title'>{title}</h2>
                         <p className='product__text'>{text} </p>
                     </div>
+                    <ul className='product__list'>
+                        <li className='product__item'>
+                            <data className={goCategory === "all" || "" ? 'product__active' : ''} onClick={(e) => setGoCategory(e.target.value)} value="all">All</data>
+                        </li>
+                        {
+                            productItem
+                        }
+                    </ul>
                     <div className='product__cards'>
-                        {PRODUCT?.products?.map((product) => (
+                        {PRODUCT?.map((product) => (
                             <div key={product?.id} className="product__card">
                                 <div className="product__card__img">
                                     <Link href={`/product/${product?.id}`} >

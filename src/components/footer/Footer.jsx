@@ -1,10 +1,15 @@
+"use client"
 import Image from "next/image";
 import React from "react";
 import img from "../../assets/footer.png";
 
 import "./footer.scss";
+import { usePathname } from "next/navigation";
 
 const Footer = () => {
+  let location = usePathname()
+  if (location.includes("/admin")) return <></>
+
   return (
     <footer className="footer">
       <div className="footer__card container">

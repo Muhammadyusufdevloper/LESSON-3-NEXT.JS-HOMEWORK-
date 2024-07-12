@@ -1,5 +1,6 @@
 .product {
   padding: 90px 0 125px;
+
   &__info {
     display: flex;
     align-items: center;
@@ -65,6 +66,34 @@
       color: #56b280;
     }
   }
+  &__list {
+    display: flex;
+    align-items: center;
+    overflow: auto;
+    gap: 5px;
+    data {
+      text-wrap: nowrap;
+      padding: 5px 20px;
+      background-color: transparent;
+      color: #56b280;
+      border: 1px solid #56b280;
+      border-radius: 10px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.5s ease;
+      &:hover {
+        background-color: #56b27f1a;
+      }
+    }
+    height: 45px;
+    margin-bottom: 30px;
+    &::-webkit-scrollbar {
+      height: 2px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #56b280;
+    }
+  }
 
   &__card__info {
     padding: 10px;
@@ -112,4 +141,8 @@
       grid-gap: 20px;
     }
   }
+}
+.product__active {
+  background-color: #56b280 !important;
+  color: #fff !important;
 }
