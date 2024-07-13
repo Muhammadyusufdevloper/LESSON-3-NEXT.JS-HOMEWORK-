@@ -1,4 +1,4 @@
-.create-product {
+.create-category {
   margin-top: 30px;
   &__form {
     max-width: 500px;
@@ -30,25 +30,10 @@
       background-color: #36374065;
     }
   }
-  &__textarea {
-    width: 500px;
-    min-height: 100px;
-    padding: 10px 8px;
-    border: 1px solid #363740;
-    border-radius: 4px;
-    outline: none;
-    resize: vertical;
-  }
   &__button {
-    padding: 8px 34px;
+    padding: 6px 28px;
     background-color: #363740;
     color: #dde2ff;
     border-radius: 4px;
-  }
-  &__description-length {
-    margin-top: 6px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
   }
 }
