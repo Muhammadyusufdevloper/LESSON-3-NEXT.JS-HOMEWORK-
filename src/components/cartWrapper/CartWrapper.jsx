@@ -100,6 +100,7 @@ const CartWrapper = () => {
                                             <span>Qty:</span>
                                             <div className="cart__counter">
                                                 <button
+                                                    disabled={cart.quantity >= 1}
                                                     onClick={() =>
                                                         dispatch(
                                                             decrementCart(cart)
